@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ object.title }}</title>
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+</head>
+<body>
+    <div class="object-card">
+        <h2>{{ object.title }}</h2>
+        <p>{{ object.description }}</p>
+        <img src="{{ object.image.url }}" alt="{{ object.title }}">
+        <p>Дата выпуска: {{ object.release_date }}</p>
+        {% if object.video %}
+            <video controls>
+                <source src="{{ object.video.url }}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        {% endif %}
+    </div>
+</body>
+</html>

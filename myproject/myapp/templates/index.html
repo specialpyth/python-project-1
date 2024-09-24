@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+</head>
+<body>
+    <h1>Список объектов</h1>
+    <div class="container">
+        {% for object in objects %}
+            <div class="object-card">
+                <h2><a href="{% url 'detail' object.id %}">{{ object.title }}</a></h2>
+                <img src="{{ object.image.url }}" alt="{{ object.title }}">
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
